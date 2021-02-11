@@ -7,11 +7,21 @@ import datetime
 class BaseModel:
     """BaseModel"""
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """the init"""
-        self.id = uuid.uuid4()
-        self.created_at = datetime.datetime.now()
-        self.updated_at = self.created_at
+        if kwargs is not None and kwargs != {}:
+            for key in kwargs:
+                if key is __class__:
+                    continue
+                elif key is "created_at" or key is "updated_at":
+                    self.__dict__[key] = datetime.datetime.strptime(
+                        kwargs[key], '%Y-%m-%dT%H:%M:%S.%f')
+                else:
+                    self.__dict__[key] = kwargs[key]
+        else:
+            self.id = uuid.uuid4()
+            self.created_at = datetime.datetime.now()
+            self.updated_at = self.created_at
 
     def __str__(self):
         """how we return srt of the class"""
