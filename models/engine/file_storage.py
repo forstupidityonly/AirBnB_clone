@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+B#!/usr/bin/python3
 """File storage module: UPDATE THIS LINE LATER"""
 import json
 import os.path
@@ -29,6 +29,10 @@ class FileStorage:
 
     def reload(self):
         """reloads a json file to a dictionary"""
+        redict = {}
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, 'r') as f:
-                self.__objects = json.load(f)
+                redict = json.load(f)
+            for key in redict:
+                tmp = key[__class__](key)
+                self.new(tmp)
