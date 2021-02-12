@@ -2,7 +2,7 @@
 """the base for all obj in abab"""
 import uuid
 import datetime
-from models import storage
+import models
 
 
 class BaseModel:
@@ -23,7 +23,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = self.created_at
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """how we return srt of the class"""
@@ -33,7 +33,7 @@ class BaseModel:
     def save(self):
         """to save class"""
         self.updated_at = datetime.datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """to make dict repersentation"""

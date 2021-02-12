@@ -4,6 +4,7 @@ import json
 import os.path
 import models
 
+
 class FileStorage:
     """Storage system for AirBnB clone"""
     __file_path = "file.json"
