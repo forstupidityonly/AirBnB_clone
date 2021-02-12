@@ -26,16 +26,15 @@ class FileStorage:
             savedict[x] = self.__objects[x].to_dict()
 
         with open(self.__file_path, 'w') as f:
-            json.dump(savedict, f)
+            f.write(json.dumps(savedict))
 
     def reload(self):
         """reloads a json file to a dictionary"""
         redict = {}
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, 'r') as f:
-                redict = json.load(f)
+                redict = json.loads(f.read())
                 for key in redict:
                     cn = redict[key]["__class__"]
                     func = models.class_dict[cn]
-                    tmp = func(key)
-                    self.new(tmp)
+                    self.__objects[key] = func(**redict[key])

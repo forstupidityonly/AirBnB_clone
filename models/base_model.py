@@ -14,7 +14,7 @@ class BaseModel:
             for key in kwargs:
                 if key is __class__:
                     continue
-                elif key is "created_at" or key is "updated_at":
+                elif key == "created_at" or key == "updated_at":
                     self.__dict__[key] = datetime.datetime.strptime(
                         kwargs[key], '%Y-%m-%dT%H:%M:%S.%f')
                 else:
@@ -37,8 +37,8 @@ class BaseModel:
 
     def to_dict(self):
         """to make dict repersentation"""
-        return {
-            "id": self.id,
-            "created_at": self.created_at.isoformat(),
-            "updated_at": self.updated_at.isoformat(),
-            "__class__": type(self).__name__}
+        dict_grayson = self.__dict__.copy()
+        dict_grayson["created_at"] = self.created_at.isoformat()
+        dict_grayson["updated_at"] = self.updated_at.isoformat()
+        dict_grayson["__class__"] = type(self).__name__
+        return dict_grayson
