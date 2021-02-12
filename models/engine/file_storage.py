@@ -34,8 +34,8 @@ class FileStorage:
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, 'r') as f:
                 redict = json.load(f)
-            for key in redict:
-                cn = key["__class__"]
-                func = class_dict[cn]
-                func(key)
-                self.new(func)
+                for key in redict:
+                    cn = redict[key]["__class__"]
+                    func = models.class_dict[cn]
+                    tmp = func(key)
+                    self.new(tmp)
