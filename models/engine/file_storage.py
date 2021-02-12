@@ -1,8 +1,8 @@
-B#!/usr/bin/python3
+#!/usr/bin/python3
 """File storage module: UPDATE THIS LINE LATER"""
 import json
 import os.path
-
+import models
 
 class FileStorage:
     """Storage system for AirBnB clone"""
@@ -34,5 +34,7 @@ class FileStorage:
             with open(self.__file_path, 'r') as f:
                 redict = json.load(f)
             for key in redict:
-                tmp = key[__class__](key)
-                self.new(tmp)
+                cn = key["__class__"]
+                func = class_dict[cn]
+                func(key)
+                self.new(func)
