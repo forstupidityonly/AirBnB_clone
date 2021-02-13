@@ -75,8 +75,9 @@ class HBNBCommand(cmd.Cmd):
                 if z[0] == x[0]:
                     if z[1] == x[1]:
                         fb = 1
+                        var = y
             if fb == 1:
-                del sdict[y]
+                del sdict[var]
                 models.storage.save()
             if fb == 0:
                 print("** no instance found **")
@@ -100,6 +101,36 @@ class HBNBCommand(cmd.Cmd):
                     if z[0] == x[0]:
                         lc.append(str(pdict[key]))
                 print(lc)
+
+    def do_update(self, args):
+        """Updates an instance based on the class name and id by adding or updating attribute"""
+        if args == "" or args is None:
+            print("** class name missing **")
+            return
+        x = args.split()
+        if x[0] not in models.class_dict:
+            print("** class doesn't exits **")
+        elif len(x) < 2:
+            print("** instance id missing **")
+        elif len(x) < 3:
+            print("** attribute name missing **")
+        elif len(x) < 4:
+            print("** value missing **")
+        else:
+            sdict = models.storage.all()
+            fb = 0
+            for y in sdict:
+                z = y.split(".")
+                if z[0] == x[0]:
+                    if z[1] == x[1]:
+                        fb = 1
+                        var = y
+            if fb == 1:
+                var2 = x[2]
+                sdict[var].__dict__[var2] = x[3]
+                models.storage.save()
+            if fb == 0:
+                print("** no instance found **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
