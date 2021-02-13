@@ -43,8 +43,19 @@ class HBNBCommand(cmd.Cmd):
         x = args.split()
         if x[0] not in models.class_dict:
             print("** class doesn't exits **")
+        elif len(x) < 2:
+            print("** instance id missing **")
         else:
-            pass
+            sdict = models.storage.all()
+            fb = 0
+            for y in sdict:
+                z = y.split(".")
+                if z[0] == x[0]:
+                    if z[1] == x[1]:
+                        fb = 1
+                        print(sdict[y])
+            if fb == 0:
+                print("** no instance found **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
