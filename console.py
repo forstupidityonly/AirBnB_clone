@@ -57,7 +57,6 @@ class HBNBCommand(cmd.Cmd):
             if fb == 0:
                 print("** no instance found **")
 
-
     def do_destroy(self, args):
         """ Deletes an instance based on the class name and id"""
         if args == "" or args is None:
@@ -81,6 +80,26 @@ class HBNBCommand(cmd.Cmd):
                 models.storage.save()
             if fb == 0:
                 print("** no instance found **")
+
+    def do_all(self, args):
+        """Prints all string representation of all instances based or not on the class name"""
+        pdict = models.storage.all()
+        if args == "" or args == None:
+            lc = []
+            for key in pdict:
+                lc.append(str(pdict[key]))
+            print(lc)
+        else:
+            x = args.split()
+            if x[0] not in models.class_dict:
+                print("** class doesn't exits **")
+            else:
+                lc = []
+                for key in pdict:
+                    z = key.split(".")
+                    if z[0] == x[0]:
+                        lc.append(str(pdict[key]))
+                print(lc)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
