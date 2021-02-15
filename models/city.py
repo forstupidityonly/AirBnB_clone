@@ -3,7 +3,7 @@
 import models
 
 
-class User(models.base_model.BaseModel):
+class City(models.base_model.BaseModel):
     """Stores AirBnB user information"""
     def __init__(self, *args, **kwargs):
         self.state_id = ""
