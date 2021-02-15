@@ -119,6 +119,19 @@ class HBNBCommand(cmd.Cmd):
         else:
             sdict = models.storage.all()
             fb = 0
+            
+            
+            str_cat = x[3]
+            if not x[3].endswith('"'):
+                for i in range(4, len(x)):
+                    str_cat += " " + x[i]
+                    if x[i].endswith('"'):
+                        break
+            if not str_cat.endswith('"'):
+                print("** value missing **")
+                return
+            str_cat = str_cat.split('"')
+    
             for y in sdict:
                 z = y.split(".")
                 if z[0] == x[0]:
@@ -127,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
                         var = y
             if fb == 1:
                 var2 = x[2]
-                sdict[var].__dict__[var2] = x[3]
+                sdict[var].__dict__[var2] = str_cat[1]
                 models.storage.save()
             if fb == 0:
                 print("** no instance found **")
