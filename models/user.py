@@ -6,6 +6,7 @@ import models
 class User(models.base_model.BaseModel):
     """Stores AirBnB user information"""
     def __init__(self, *args, **kwargs):
+        """initializes a User"""
         if not kwargs:
             self.email = ""
             self.password = ""
