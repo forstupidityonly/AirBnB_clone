@@ -21,10 +21,17 @@ class Test_Base_model(unittest.TestCase):
                                                           39, 282299))
         self.assertEqual(b2.updated_at, datetime.datetime(2021, 2, 17, 2, 16,
                                                           39, 282323))
-        self.assertEqual(str(b2), str(b2))
+        test_str = b2.__str__()[:52]
+        test_last = b2.__str__()[-1:]
+        self.assertEqual(test_str, "[BaseModel] \
+(8bdb1808-7f1a-4f06-bb0c-324c46f9c632) {")
+        self.assertEqual(test_last, "}")
         b2.save()
-        self.assertEqual(b2.updated_at, b2.updated_at)
+        up_time = b2.updated_at
+        self.assertEqual(b2.updated_at, up_time)
         self.assertEqual(b2.__class__, BaseModel)
 
         b1 = BaseModel()
-        self.assertEqual(type(b1), BaseModel)
+        self.assertIsInstance(b1, BaseModel)
+        self.assertEqual(b1.created_at, b1.updated_at)
+        self.assertNotEqual(b1.id, "")
