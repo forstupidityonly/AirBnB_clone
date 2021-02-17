@@ -14,6 +14,8 @@ class Test_Base_model(unittest.TestCase):
                      'updated_at': '2021-02-17T02:16:39.282323',
                      'id': '8bdb1808-7f1a-4f06-bb0c-324c46f9c632'}
         b2 = BaseModel(**test_dict)
+        td2 = b2.to_dict()
+        self.assertEqual(td2["__class__"], "BaseModel")
         self.assertEqual(b2.id, '8bdb1808-7f1a-4f06-bb0c-324c46f9c632')
         self.assertEqual(b2.created_at, datetime.datetime(2021, 2, 17, 2, 16,
                                                           39, 282299))
