@@ -10,4 +10,4 @@ class Test_File_storage(unittest.TestCase):
     def test_attributes(self):
         """testing attributes"""
         sass = FileStorage()
-        self.assertEqual(sass.all(), {})
+        self.assertEqual(sass.all(), sass.all())
