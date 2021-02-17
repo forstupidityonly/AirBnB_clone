@@ -9,4 +9,3 @@ class City(models.base_model.BaseModel):
         self.state_id = ""
         self.name = ""
         super().__init__()
-        

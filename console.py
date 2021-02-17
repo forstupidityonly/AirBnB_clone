@@ -36,7 +36,8 @@ class HBNBCommand(cmd.Cmd):
             print(temp.id)
 
     def do_show(self, args):
-        """Prints the string representation of an instance based on the class name and id"""
+        """Prints the string representation of an
+        instance based on the class name and id"""
         if args == "" or args is None:
             print("** class name missing **")
             return
@@ -83,9 +84,10 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, args):
-        """Prints all string representation of all instances based or not on the class name"""
+        """Prints all string representation of all
+        instances based or not on the class name"""
         pdict = models.storage.all()
-        if args == "" or args == None:
+        if args == "" or args is None:
             lc = []
             for key in pdict:
                 lc.append(str(pdict[key]))
@@ -103,7 +105,8 @@ class HBNBCommand(cmd.Cmd):
                 print(lc)
 
     def do_update(self, args):
-        """Updates an instance based on the class name and id by adding or updating attribute"""
+        """Updates an instance based on the class
+        name and id by adding or updating attribute"""
         if args == "" or args is None:
             print("** class name missing **")
             return
@@ -119,8 +122,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             sdict = models.storage.all()
             fb = 0
-            
-            
+
             str_cat = x[3]
             if not x[3].endswith('"'):
                 for i in range(4, len(x)):
@@ -131,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** value missing **")
                 return
             str_cat = str_cat.split('"')
-    
+
             for y in sdict:
                 z = y.split(".")
                 if z[0] == x[0]:
@@ -144,6 +146,7 @@ class HBNBCommand(cmd.Cmd):
                 models.storage.save()
             if fb == 0:
                 print("** no instance found **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
