@@ -33,3 +33,8 @@ class Test_Base_model(unittest.TestCase):
         self.assertIsInstance(b2.id, str)
         self.assertEqual(b2.updated_at, b2.created_at)
 
+        test_str = b1.__str__()[:52]
+        test_last = b1.__str__()[-1:]
+        self.assertEqual(test_str, "[BaseModel] \
+(72db1a16-1147-4c12-a72b-a91db820f1a6) {")
+        self.assertEqual(test_last, "}")
