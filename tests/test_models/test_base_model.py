@@ -14,6 +14,7 @@ class Test_Base_model(unittest.TestCase):
         "created_at": "2021-02-18T11:30:32.494714", 
         "updated_at": "2021-02-18T11:30:32.494714"}
         b1 = BaseModel(**test_dict)
+        self.assertIsInstance(b1, BaseModel)
         self.assertEqual(b1.id, test_dict["id"])
         self.assertIsInstance(b1.created_at, datetime.datetime)
         self.assertIsInstance(b1.updated_at, datetime.datetime)
@@ -23,8 +24,9 @@ class Test_Base_model(unittest.TestCase):
         b1.save()
         self.assertNotEqual(b1.created_at, b1.updated_at)
         b2 = BaseModel()
+        self.assertIsInstance(b2, BaseModel)
         self.assertIsInstance(b2.created_at, datetime.datetime)
         self.assertIsInstance(b2.updated_at, datetime.datetime)
         self.assertIsInstance(b2.id, str)
         self.assertEqual(b2.updated_at, b2.created_at)
-        
+
