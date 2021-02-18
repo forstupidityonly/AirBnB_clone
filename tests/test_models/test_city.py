@@ -11,3 +11,4 @@ class Test_City(unittest.TestCase):
         """testing attributes"""
         b1 = City()
         self.assertEqual(b1.name, "")
+        self.assertEqual(b1.state_id, "")
