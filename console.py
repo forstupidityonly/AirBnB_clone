@@ -166,6 +166,9 @@ class HBNBCommand(cmd.Cmd):
                         var = y
             if fb == 1:
                 var2 = x[2]
+                if var2 in sdict[var].__dict__:
+                    var3 = type(sdict[var].__dict__[var2])
+                    sdict[var].__dict__[var2] = var3(str_cat[1])
                 sdict[var].__dict__[var2] = str_cat[1]
                 sdict[var].save()
                 models.storage.save()
