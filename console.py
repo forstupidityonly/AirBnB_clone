@@ -1,4 +1,4 @@
-B#!/usr/bin/python3
+#!/usr/bin/python3
 """console"""
 import cmd
 import models
