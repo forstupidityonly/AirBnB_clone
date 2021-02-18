@@ -31,6 +31,15 @@ class HBNBCommand(cmd.Cmd):
             j = y[1].split('"')
             args = x[0] + " " + j[1]
             self.do_destroy(args)
+        elif y[0] == "update":
+            j = y[1].split(",")
+            j[2] = j[2][:-1]
+            if '"' in j[2]:
+                i = j[2][1:]
+            else:
+                i = '"' + j[2][1:] + '"'
+            args = x[0] + " " + j[0][1:-1] + " " + j[1][2:-1] + " " + i
+            self.do_update(args)
         else:
             print("*** Unknown syntax: {}".format(args))
             return
