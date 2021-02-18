@@ -66,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
             return
         x = args.split()
         if x[0] not in models.class_dict:
-            print("** class doesn't exits **")
+            print("** class doesn't exist **")
         elif len(x) < 2:
             print("** instance id missing **")
         else:
@@ -88,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
             return
         x = args.split()
         if x[0] not in models.class_dict:
-            print("** class doesn't exits **")
+            print("** class doesn't exist **")
         elif len(x) < 2:
             print("** instance id missing **")
         else:
@@ -117,7 +117,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             x = args.split()
             if x[0] not in models.class_dict:
-                print("** class doesn't exits **")
+                print("** class doesn't exist **")
             else:
                 lc = []
                 for key in pdict:
@@ -133,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
             return
         x = args.split()
         if x[0] not in models.class_dict:
-            print("** class doesn't exits **")
+            print("** class doesn't exist **")
         elif len(x) < 2:
             print("** instance id missing **")
         elif len(x) < 3:
