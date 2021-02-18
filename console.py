@@ -15,6 +15,7 @@ class HBNBCommand(cmd.Cmd):
     def default(self, args):
         """default run"""
         x = args.split(".")
+        y = x[1].split("(")
         if x[0] not in models.class_dict or len(x) < 2:
             print("*** Unknown syntax: {}".format(args))
             return
@@ -22,6 +23,10 @@ class HBNBCommand(cmd.Cmd):
             self.do_all(x[0])
         elif x[1] == "count()":
             self.count(x[0])
+        elif y[0] == "show":
+            j = y[1].split('"')
+            args = x[0] + " " + j[1]
+            self.do_show(args)
         else:
             print("*** Unknown syntax: {}".format(args))
             return
