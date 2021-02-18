@@ -60,8 +60,7 @@ class HBNBCommand(cmd.Cmd):
             models.storage.save()
 
     def do_show(self, args):
-        """Prints the string representation of an
-        instance based on the class name and id"""
+        """Prints a class"""
         if args == "" or args is None:
             print("** class name missing **")
             return
@@ -108,8 +107,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, args):
-        """Prints all string representation of all
-        instances based or not on the class name"""
+        """Prints all classes"""
         pdict = models.storage.all()
         if args == "" or args is None:
             lc = []
@@ -129,8 +127,7 @@ class HBNBCommand(cmd.Cmd):
                 print(lc)
 
     def do_update(self, args):
-        """Updates an instance based on the class
-        name and id by adding or updating attribute"""
+        """Update a class based on id"""
         if args == "" or args is None:
             print("** class name missing **")
             return
