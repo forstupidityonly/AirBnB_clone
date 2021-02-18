@@ -27,6 +27,10 @@ class HBNBCommand(cmd.Cmd):
             j = y[1].split('"')
             args = x[0] + " " + j[1]
             self.do_show(args)
+        elif y[0] == "destroy":
+            j = y[1].split('"')
+            args = x[0] + " " + j[1]
+            self.do_destroy(args)
         else:
             print("*** Unknown syntax: {}".format(args))
             return
