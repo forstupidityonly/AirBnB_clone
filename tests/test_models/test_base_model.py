@@ -21,7 +21,10 @@ class Test_Base_model(unittest.TestCase):
         test_class = b1.to_dict()
         self.assertEqual(test_class["__class__"], "BaseModel")
         b1.save()
-        date_time = datetime.datetime.now()
         self.assertNotEqual(b1.created_at, b1.updated_at)
-
-
+        b2 = BaseModel()
+        self.assertIsInstance(b2.created_at, datetime.datetime)
+        self.assertIsInstance(b2.updated_at, datetime.datetime)
+        self.assertIsInstance(b2.id, str)
+        self.assertEqual(b2.updated_at, b2.created_at)
+        
