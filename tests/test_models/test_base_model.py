@@ -15,3 +15,6 @@ class Test_Base_model(unittest.TestCase):
         "updated_at": "2021-02-18T11:30:32.494714"}
         b1 = BaseModel(**test_dict)
         self.assertEqual(b1.id, test_dict["id"])
+        self.assertIsInstance(b1.created_at, datetime.datetime)
+        self.assertIsInstance(b1.updated_at, datetime.datetime)
+        
