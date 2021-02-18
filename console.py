@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+B#!/usr/bin/python3
 """console"""
 import cmd
 import models
@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             func = models.class_dict[x[0]]
             temp = func()
-            temp.save()
+            storage.save()
             print(temp.id)
 
     def do_show(self, args):
