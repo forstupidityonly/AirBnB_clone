@@ -20,6 +20,21 @@ class HBNBCommand(cmd.Cmd):
             return
         elif x[1] == "all()":
             self.do_all(x[0])
+        elif x[1] == "count()":
+            self.count(x[0])
+        else:
+            print("*** Unknown syntax: {}".format(args))
+            return
+
+    def count(self, args):
+        """counts number of instances of a class"""
+        sdict = models.storage.all()
+        count = 0
+        for y in sdict:
+            z = y.split(".")
+            if z[0] == args:
+                count += 1
+        print(count)
 
     def do_quit(self, args):
         """Quit to exit"""
