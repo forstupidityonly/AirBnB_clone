@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             func = models.class_dict[x[0]]
             temp = func()
-            storage.save()
+            temp.save()
             print(temp.id)
 
     def do_show(self, args):
