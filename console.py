@@ -12,6 +12,15 @@ class HBNBCommand(cmd.Cmd):
         """Do nothing"""
         pass
 
+    def default(self, args):
+        """default run"""
+        x = args.split(".")
+        if x[0] not in models.class_dict or len(x) < 2:
+            print("*** Unknown syntax: {}".format(args))
+            return
+        elif x[1] == "all()":
+            self.do_all(x[0])
+
     def do_quit(self, args):
         """Quit to exit"""
         return True
