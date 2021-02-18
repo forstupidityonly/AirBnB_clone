@@ -21,18 +21,19 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, args):
-        """Creates a new instance of BaseModel, and saves it"""
+        """Creates a new instance of a class, and saves it"""
         if args == "" or args is None:
             print("** class name missing **")
             return
         x = args.split()
         if x[0] not in models.class_dict:
             print("** class doesn't exist **")
+            return
         else:
             func = models.class_dict[x[0]]
             temp = func()
-            models.storage.save()
             print(temp.id)
+            models.storage.save()
 
     def do_show(self, args):
         """Prints the string representation of an
