@@ -6,7 +6,7 @@ import models
 
 
 class BaseModel:
-    """BaseModel"""
+    """BaseModel for storing AB&B info"""
 
     def __init__(self, *args, **kwargs):
         """the init"""
