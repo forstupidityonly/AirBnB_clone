@@ -143,6 +143,7 @@ class HBNBCommand(cmd.Cmd):
             if fb == 1:
                 var2 = x[2]
                 sdict[var].__dict__[var2] = str_cat[1]
+                sdict[var].save()
                 models.storage.save()
             if fb == 0:
                 print("** no instance found **")
