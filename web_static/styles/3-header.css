@@ -1,3 +1,14 @@
 header {
-    background-color: #FF0000; height: 70px; width: 100%; top: 0; position: fixed; 
+    background-color: #FFFF;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px #CCCCCC solid;
+    top: 0;
+    position: fixed;
+}
+
+.logo {
+    background-image: url("../PNG/logo.png");
+    width: 142px;
+    height: 60px;
 }
